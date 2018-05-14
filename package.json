@@ -1,65 +1,60 @@
 {
-  "name": "@linuxbox/syslogger",
-  "version": "0.1.0",
-  "engineStrict": true,
+  "name": "node-syslogger",
   "engines": {
-    "node": ">= 6"
+    "node": ">= 6.9.0"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "devDependencies": {
-    "@types/jest": "~22.2.2",
-    "@types/node": "~8.10.0",
-    "@types/winston": "^2.3.9",
-    "@types/winston-syslog": "^1.0.0",
-    "husky": "^0.14.3",
-    "jest": "~22.4.3",
-    "nodemon": "^1.17.3",
-    "prettier": "1.12.1",
-    "pretty-quick": "^1.4.1",
-    "rimraf": "~2.6.2",
-    "ts-jest": "~22.4.2",
-    "ts-node": "^6.0.0",
-    "tslib": "~1.9.0",
-    "tslint": "~5.9.1",
-    "tslint-config-airbnb": "^5.8.0",
-    "tslint-config-prettier": "^1.12.0",
-    "tslint-microsoft-contrib": "~5.0.3",
-    "tsutils": "~2.24.0",
-    "typescript": "~2.8.1"
-  },
-  "scripts": {
-    "clean": "rimraf coverage build tmp",
-    "build": "tsc -p tsconfig.json --declaration",
-    "watch": "tsc -w -p tsconfig.json",
-    "dev":
-      "NODE_ENV=development nodemon --watch 'lib/**/*.ts' --ignore 'lib/**/*.spec.ts' --exec 'ts-node' lib/index.ts",
-    "lint": "tslint -t stylish --project \"tsconfig.json\"",
-    "pretest": "npm run lint",
-    "test": "npm run test-only",
-    "test-only": "jest --coverage",
-    "test:watch": "jest --watch",
-    "prepush": "npm run test && npm run lint",
-    "precommit": "pretty-quick --staged && npm run build",
-    "prepublish": "npm run build"
-  },
-  "author": "“Vlastimil <“vsadilek@linuxbox.cz”>",
+  "main": "./lib/main.js",
+  "types:": "./lib/src/index.d.ts",
+  "version": "0.1.13",
   "license": "MIT",
-  "dependencies": {
-    "winston": "^2.4.2",
-    "winston-syslog": "1.2.6"
-  },
-  "directories": {
-    "lib": "lib"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vlastoun/syslogger.git"
   },
-  "keywords": ["syslogger", "syslog"],
+  "keywords": ["syslogger", "winston", "syslog"],
   "bugs": {
     "url": "https://github.com/vlastoun/syslogger/issues"
   },
   "homepage": "https://github.com/vlastoun/syslogger#readme",
-  "description": ""
+  "description": "",
+  "scripts": {
+    "clean": "rimraf lib coverage",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "precommit": "npm run prettier:staged && npm run test",
+    "prettier": "pretty-quick",
+    "prettier:staged": "pretty-quick --staged",
+    "dev": "npm run clean && cross-env NODE_ENV=development backpack dev",
+    "build": "cross-env NODE_ENV=production backpack build",
+    "prepublish": "npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^8.0.28",
+    "@types/winston": "^2.3.9",
+    "@types/winston-syslog": "^1.0.0",
+    "babel-preset-env": "^1.7.0",
+    "backpack-core": "^0.7.0",
+    "cross-env": "^5.1.5",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lerna": "^2.11.0",
+    "prettier": "^1.12.1",
+    "pretty-quick": "^1.4.1",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.6",
+    "ts-loader": "3.5.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "winston": "^2.4.2",
+    "winston-syslog": "1.2.6"
+  }
 }

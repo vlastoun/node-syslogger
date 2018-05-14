@@ -1,43 +1,46 @@
-import * as winston from "winston";
-import * as syslog from "winston-syslog";
+import * as winston from 'winston';
+import * as syslog from 'winston-syslog';
 
-class Logger {
+export class Logger {
   private options: syslog.SyslogTransportOptions;
   private logger: winston.LoggerInstance;
   private loggerOptions: winston.LoggerOptions;
   private transports: winston.TransportInstance[] = [];
-
+  private logLevel: string;
   private format(inputObject: any): string {
     return JSON.stringify(inputObject);
   }
-
   /**
    *
    * @param appName application name
-   * @param protocol {string} unix
+   * @param path default: /dev/log
    * @param level {string} debug|info|notice|warning|error|crit|alert|emerg;
+   * @param protocol {string} unix
    */
   constructor(
-    appName: string = "syslogger",
-    protocol: string = "unix",
-    level: string = "debug"
+    appName: string = 'syslogger',
+    path: string = '/dev/log',
+    level: string = 'debug',
+    protocol: string = 'unix'
   ) {
     this.options = {
       protocol,
+      path,
       app_name: appName,
-      path: "/dev/log"
     };
+
+    this.logLevel = process.env.DEBUG_LEVEL || level;
 
     this.transports.push(new syslog.Syslog(this.options));
 
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       this.transports.push(new winston.transports.Console());
     }
 
     this.loggerOptions = {
-      level,
+      level: this.logLevel,
       levels: winston.config.syslog.levels,
-      transports: this.transports
+      transports: this.transports,
     };
 
     this.logger = new winston.Logger(this.loggerOptions);
@@ -55,33 +58,31 @@ class Logger {
   }
 
   emerg(message: string, object?: any) {
-    this.logger.log("emerg", message, object);
+    this.log('emerg', message, object);
   }
   alert(message: string, object?: any) {
-    this.logger.log("alert", message, object);
+    this.log('alert', message, object);
   }
   crit(message: string, object?: any) {
-    this.logger.log("crit", message, object);
+    this.log('crit', message, object);
   }
   error(message: string, object?: any) {
-    this.logger.log("error", message, object);
+    this.log('error', message, object);
   }
   warning(message: string, object?: any) {
-    this.logger.log("warning", message, object);
+    this.log('warning', message, object);
   }
   notice(message: string, object?: any) {
-    this.logger.log("notice", message, object);
+    this.log('notice', message, object);
   }
   info(message: string, object?: any) {
-    this.logger.log("info", message, object);
+    this.log('info', message, object);
   }
   debug(message: string, object?: any) {
-    this.logger.log("debug", message, object);
+    this.log('debug', message, object);
   }
 
   parseObject(message: string, object: any) {
     return `${this.format(object)}${message}`;
   }
 }
-
-export default Logger;
