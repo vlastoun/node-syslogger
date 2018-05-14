@@ -3,4 +3,5 @@ yarn-error.log
 .vscode/
 postgres-service
 dist/
+lib/
 coverage/
