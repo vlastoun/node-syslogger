@@ -1,6 +1,6 @@
 {
   "name": "node-syslogger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engineStrict": true,
   "engines": {
     "node": ">= 6"
