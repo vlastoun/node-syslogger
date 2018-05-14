@@ -19,13 +19,14 @@ class Logger {
    */
   constructor(
     appName: string = "syslogger",
+    path: string = "/dev/log",
     protocol: string = "unix",
     level: string = "debug"
   ) {
     this.options = {
       protocol,
-      app_name: appName,
-      path: "/dev/log"
+      path,
+      app_name: appName
     };
 
     this.transports.push(new syslog.Syslog(this.options));
@@ -55,28 +56,28 @@ class Logger {
   }
 
   emerg(message: string, object?: any) {
-    this.logger.log("emerg", message, object);
+    this.log("emerg", message, object);
   }
   alert(message: string, object?: any) {
-    this.logger.log("alert", message, object);
+    this.log("alert", message, object);
   }
   crit(message: string, object?: any) {
-    this.logger.log("crit", message, object);
+    this.log("crit", message, object);
   }
   error(message: string, object?: any) {
-    this.logger.log("error", message, object);
+    this.log("error", message, object);
   }
   warning(message: string, object?: any) {
-    this.logger.log("warning", message, object);
+    this.log("warning", message, object);
   }
   notice(message: string, object?: any) {
-    this.logger.log("notice", message, object);
+    this.log("notice", message, object);
   }
   info(message: string, object?: any) {
-    this.logger.log("info", message, object);
+    this.log("info", message, object);
   }
   debug(message: string, object?: any) {
-    this.logger.log("debug", message, object);
+    this.log("debug", message, object);
   }
 
   parseObject(message: string, object: any) {
