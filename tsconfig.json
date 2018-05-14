@@ -15,8 +15,8 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
-    "outDir": "./dist"
+    "outDir": "./lib"
   },
-  "include": ["lib/**/*"],
-  "exclude": ["lib/**/*.test.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test.ts"]
 }
