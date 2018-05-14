@@ -1,5 +1,5 @@
 {
-  "name": "@linuxbox/syslogger",
+  "name": "node-syslogger",
   "version": "0.1.0",
   "engineStrict": true,
   "engines": {
@@ -41,7 +41,7 @@
     "test:watch": "jest --watch",
     "prepush": "npm run test && npm run lint",
     "precommit": "pretty-quick --staged && npm run build",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "author": "“Vlastimil <“vsadilek@linuxbox.cz”>",
   "license": "MIT",
@@ -54,12 +54,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vlastoun/syslogger.git"
+    "url": "git+https://github.com/vlastoun/node-syslogger.git"
   },
   "keywords": ["syslogger", "syslog"],
   "bugs": {
-    "url": "https://github.com/vlastoun/syslogger/issues"
+    "url": "https://github.com/vlastoun/node-syslogger/issues"
   },
-  "homepage": "https://github.com/vlastoun/syslogger#readme",
+  "homepage": "https://github.com/vlastoun/node-syslogger#readme",
   "description": ""
 }
