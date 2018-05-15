@@ -12,6 +12,7 @@
     "@types/node": "~8.10.0",
     "@types/winston": "^2.3.9",
     "@types/winston-syslog": "^1.0.0",
+    "backpack-core": "^0.7.0",
     "husky": "^0.14.3",
     "jest": "~22.4.3",
     "nodemon": "^1.17.3",
@@ -19,6 +20,7 @@
     "pretty-quick": "^1.4.1",
     "rimraf": "~2.6.2",
     "ts-jest": "~22.4.2",
+    "ts-loader": "3.5.0",
     "ts-node": "^6.0.0",
     "tslib": "~1.9.0",
     "tslint": "~5.9.1",
@@ -30,22 +32,22 @@
   },
   "scripts": {
     "clean": "rimraf coverage build tmp lib",
-    "build": "npm run clean && tsc -p tsconfig.json --declaration",
+    "build": "NODE_ENV=production DIR=src backpack build",
     "watch": "tsc -w -p tsconfig.json",
-    "dev":
-      "NODE_ENV=development nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
+    "dev": "NODE_ENV=development DIR=src backpack dev",
     "lint": "tslint -t stylish --project \"tsconfig.json\"",
     "pretest": "npm run lint",
     "test": "npm run test-only",
     "test-only": "jest --coverage",
     "test:watch": "jest --watch",
     "prepush": "npm run test && npm run lint",
-    "precommit": "pretty-quick --staged && npm run build",
+    "precommit": "pretty-quick --staged",
     "prepare": "npm run build"
   },
   "author": "“Vlastimil <“vsadilek@linuxbox.cz”>",
   "license": "MIT",
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "winston": "^2.4.2",
     "winston-syslog": "1.2.6"
   },
