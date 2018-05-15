@@ -19,13 +19,14 @@ class Logger {
    */
   constructor(
     appName: string = "syslogger",
+    path: string = "/dev/log",
     protocol: string = "unix",
     level: string = "debug"
   ) {
     this.options = {
       protocol,
-      app_name: appName,
-      path: "/dev/log"
+      path,
+      app_name: appName
     };
 
     this.transports.push(new syslog.Syslog(this.options));
