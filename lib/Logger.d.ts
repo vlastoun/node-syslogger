@@ -10,7 +10,12 @@ declare class Logger {
    * @param protocol {string} unix
    * @param level {string} debug|info|notice|warning|error|crit|alert|emerg;
    */
-  constructor(appName?: string, protocol?: string, level?: string);
+  constructor(
+    appName?: string,
+    path?: string,
+    protocol?: string,
+    level?: string
+  );
   setFormat(fn: (inputObject: any) => string): void;
   log(level: string, message: string, object?: any): void;
   emerg(message: string, object?: any): void;
