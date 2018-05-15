@@ -5,8 +5,8 @@
   "engines": {
     "node": ">= 6"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./lib/main.js",
+  "types": "./lib/src/index.d.ts",
   "devDependencies": {
     "@types/jest": "~22.2.2",
     "@types/node": "~8.10.0",
