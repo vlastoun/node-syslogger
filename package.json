@@ -10,11 +10,12 @@
     "clean": "rimraf lib coverage",
     "test": "jest",
     "test:watch": "jest --watch",
-    "precommit": "npm run prettier:staged",
+    "precommit": "npm run prettier:staged && npm run test",
     "prettier": "pretty-quick",
     "prettier:staged": "pretty-quick --staged",
     "dev": "npm run clean && cross-env NODE_ENV=development backpack dev",
-    "build": "cross-env NODE_ENV=production backpack build"
+    "build": "cross-env NODE_ENV=production backpack build",
+    "prepublish": "npm run test && npm run build"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
