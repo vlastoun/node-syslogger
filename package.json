@@ -1,11 +1,11 @@
 {
-  "name": "@linuxbox/root",
+  "name": "node-syslogger",
   "engines": {
     "node": ">= 6.9.0"
   },
   "main": "./lib/main.js",
   "types:": "./lib/index.d.ts",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "scripts": {
     "clean": "rimraf lib coverage",
     "test": "jest",
@@ -41,8 +41,8 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "webpack-node-externals": "^1.7.2",
     "winston": "^2.4.2",
-    "winston-syslog": "1.2.6",
-    "webpack-node-externals": "^1.7.2"
+    "winston-syslog": "1.2.6"
   }
 }
