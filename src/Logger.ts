@@ -7,9 +7,19 @@ class Logger {
   private loggerOptions: winston.LoggerOptions;
   private transports: winston.TransportInstance[] = [];
   private logLevel: string;
-
   private format(inputObject: any): string {
     return JSON.stringify(inputObject);
+  }
+
+  public over(input: number): number;
+  public over(input: string): string;
+  public over(input): any {
+    if (typeof input === 'number') {
+      return input + 10;
+    }
+    if (typeof input === 'string') {
+      return input + input;
+    }
   }
 
   /**
