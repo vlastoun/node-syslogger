@@ -39,10 +39,10 @@
     "ts-jest": "^22.4.6",
     "ts-loader": "3.5.0",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^2.8.3",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "webpack-node-externals": "^1.7.2",
     "winston": "^2.4.2",
     "winston-syslog": "1.2.6"
   }
