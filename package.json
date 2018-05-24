@@ -6,6 +6,17 @@
   "main": "./lib/main.js",
   "types:": "./lib/src/index.d.ts",
   "version": "0.1.13",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vlastoun/syslogger.git"
+  },
+  "keywords": ["syslogger", "winston", "syslog"],
+  "bugs": {
+    "url": "https://github.com/vlastoun/syslogger/issues"
+  },
+  "homepage": "https://github.com/vlastoun/syslogger#readme",
+  "description": "",
   "scripts": {
     "clean": "rimraf lib coverage",
     "test": "jest",

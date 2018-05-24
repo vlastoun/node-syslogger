@@ -1,4 +1,4 @@
-import Logger from './Logger';
+import Logger from './index';
 
 describe('Logger', () => {
   it('should instanciate', () => {

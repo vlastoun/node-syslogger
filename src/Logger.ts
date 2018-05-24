@@ -1,7 +1,7 @@
 import * as winston from 'winston';
 import * as syslog from 'winston-syslog';
 
-class Logger {
+export class Logger {
   private options: syslog.SyslogTransportOptions;
   private logger: winston.LoggerInstance;
   private loggerOptions: winston.LoggerOptions;
@@ -86,5 +86,3 @@ class Logger {
     return `${this.format(object)}${message}`;
   }
 }
-
-export default Logger;
