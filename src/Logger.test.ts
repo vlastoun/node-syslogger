@@ -49,10 +49,4 @@ describe('Logger', () => {
   it('should stringify string', () => {
     expect(JSON.stringify('wow')).toEqual('"wow"');
   });
-
-  it('should overload', () => {
-    const logger = new Logger('test');
-    expect(logger.over(123)).toBe(133);
-    expect(logger.over('blah')).toBe('blahblah');
-  });
 });
